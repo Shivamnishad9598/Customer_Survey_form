@@ -1,0 +1,31 @@
+
+      
+    body{
+       
+        background-color: #01a8ef;
+        background-position: center ;
+        background-size: cover;
+        font-family: sans-serif;
+        margin-top: 40px;
+
+    }
+.form{
+    padding: 10px;
+
+}  
+
+
+
+.main {
+    width: 550px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center horizontally */
+    text-align: left; /* Center text content */
+    padding: 20px; /* Add padding for spacing */
+    border: 1px solid #ccc; /* Optional border for the box */
+
+    background-color: white;
+}
+
+footer{
+    text-align: center;
+}

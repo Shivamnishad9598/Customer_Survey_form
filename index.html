@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Customer Survey Form</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1 style="color: aliceblue;  text-align: center;"> Customer Survey Form</h1>
+    <div class="main">
+
+    <form id="surveyForm" onsubmit="return submitForm()">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+            <option value="India">INDIA</option>
+            <option value="UK">UK</option>
+            <option value="Canada">Canada</option>
+            <option value="USA">USA</option>
+            <option value="Pakistan">PAKISTAN</option>
+            
+        </select><br><br>
+
+        <label for="Gender:">Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label>
+        <br><br>
+
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" name="profession" required>
+        <br>
+        <br>
+
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" required>
+        <br><br>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content" id="modalContent">
+        </div>
+    </div>
+
+
+    <footer>
+        &copy; 2018 Customer Survey Form. All Rights Reserved | Design by W3Layouts
+    </footer>
+
+
+    <script>
+        function submitForm() {
+            // Get form values
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var dob = document.getElementById("dob").value;
+            var country = document.getElementById("country").value;
+            var gender = [...document.querySelectorAll('input[name="gender"]:checked')].map(e => e.value);
+            var profession = document.getElementById("profession").value;
+            var email = document.getElementById("email").value;
+            var mobile = document.getElementById("mobile").value;
+
+            // Validate the form data here if needed
+
+            // Display the values in the modal
+            var modalContent = document.getElementById("modalContent");
+            modalContent.innerHTML = `
+                <p><strong>First Name:</strong> ${firstName}</p>
+                <p><strong>Last Name:</strong> ${lastName}</p>
+                <p><strong>Date of Birth:</strong> ${dob}</p>
+                <p><strong>Country:</strong> ${country}</p>
+                <p><strong>Gender:</strong> ${gender.join(", ")}</p>
+                <p><strong>Profession:</strong> ${profession}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Mobile Number:</strong> ${mobile}</p>
+            `;
+
+            // Display the modal
+            var modal = document.getElementById("modal");
+            modal.style.display = "block";
+
+            // Reset the form
+            document.getElementById("surveyForm").reset();
+
+            return false; // Prevent the form from actually submitting
+        }
+
+        // Close the modal when clicking outside the content
+        var modal = document.getElementById("modal");
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
